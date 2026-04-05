@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -7,46 +8,88 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #e0eafc, #cfdef3);
+    background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 50%, #f4f5f7 100%);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    color: #333333;
     overflow: hidden;
 }
 
 .container {
-    padding: 5rem 7rem;
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 30px;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0 10px 40px 0 rgba(0, 80, 200, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4.5rem 6.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     animation: fadeInScale 1.2s cubic-bezier(0.16, 1, 0.3, 1), float 6s ease-in-out infinite 1.2s;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .container:hover {
-    transform: scale(1.02) translateY(-5px);
-    box-shadow: 0 15px 50px 0 rgba(0, 80, 200, 0.2);
-    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.02) translateY(-6px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.07), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.8);
 }
 
 .idea-text {
     margin: 0;
-    font-size: 6.5rem; /* Larger font size */
+    font-size: 40px;
     font-weight: 800;
-    background: linear-gradient(135deg, #0052D4, #4364F7, #6FB1FC); /* Vibrant blue gradient */
+    background: linear-gradient(135deg, #2c3e50, #1a252f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 15px 35px rgba(67, 100, 247, 0.3);
-    letter-spacing: -3.5px;
+    text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.05);
+    letter-spacing: -1px;
+    transition: opacity 0.2s ease;
+}
+
+.next-btn {
+    --btn-bg: #007aff;
+    --btn-hover: #005ce6;
+    --btn-shadow: rgba(0, 122, 255, 0.3);
+    --btn-shadow-hover: rgba(0, 122, 255, 0.4);
+    padding: 1.2rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    background: var(--btn-bg);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--btn-shadow);
+    transition: all 0.3s ease;
+    font-family: inherit;
+    animation: fadeInScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s backwards;
+}
+
+.next-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px var(--btn-shadow-hover);
+    background: var(--btn-hover);
+}
+
+.next-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 4px 10px var(--btn-shadow);
 }
 
 @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 @keyframes fadeInScale {
@@ -54,6 +97,7 @@ html, body {
         opacity: 0;
         transform: scale(0.9) translateY(40px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -61,7 +105,15 @@ html, body {
 }
 
 @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0px); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }

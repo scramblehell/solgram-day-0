@@ -3,13 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 첫번째 아이디어</title>
-    <link rel="stylesheet" href="style.css">
+    <title>오늘도 힘내세요!</title>
+    <link rel="stylesheet" href="style.css?v=5">
     <link rel="stylesheet" crossorigin as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 </head>
 <body>
     <div class="container">
-        <h1 class="idea-text">내 첫 번째 아이디어</h1>
+        <h1 id="messageText" class="idea-text">오늘도 힘내세요!</h1>
+        <button id="nextBtn" class="next-btn">다음 문자 보기</button>
     </div>
+
+    <script>
+        const messages = [
+            { text: '오늘도 힘내세요!', bg: '#007aff', hover: '#005ce6', shadow: 'rgba(0, 122, 255, 0.3)', hoverShadow: 'rgba(0, 122, 255, 0.4)' },
+            { text: '오늘도 해냈어요!', bg: '#f1c40f', hover: '#f39c12', shadow: 'rgba(241, 196, 15, 0.3)', hoverShadow: 'rgba(241, 196, 15, 0.4)' },
+            { text: '조금씩 나아지고 있어요.', bg: '#e67e22', hover: '#d35400', shadow: 'rgba(230, 126, 34, 0.3)', hoverShadow: 'rgba(230, 126, 34, 0.4)' },
+            { text: '이대로 계속 가봅시다.', bg: '#2ecc71', hover: '#27ae60', shadow: 'rgba(46, 204, 113, 0.3)', hoverShadow: 'rgba(46, 204, 113, 0.4)' }
+        ];
+        let currentIndex = 0;
+
+        const messageText = document.getElementById('messageText');
+        const nextBtn = document.getElementById('nextBtn');
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % messages.length;
+            const currentItem = messages[currentIndex];
+            
+            messageText.style.opacity = 0;
+            
+            setTimeout(() => {
+                messageText.textContent = currentItem.text;
+                messageText.style.opacity = 1;
+                
+                nextBtn.style.setProperty('--btn-bg', currentItem.bg);
+                nextBtn.style.setProperty('--btn-hover', currentItem.hover);
+                nextBtn.style.setProperty('--btn-shadow', currentItem.shadow);
+                nextBtn.style.setProperty('--btn-shadow-hover', currentItem.hoverShadow);
+            }, 200);
+        });
+    </script>
 </body>
 </html>
